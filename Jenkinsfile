@@ -1,5 +1,3 @@
-@Library('jenkins-shared-lib') _
-
 pipeline {
     agent any
 
@@ -16,9 +14,15 @@ pipeline {
             }
         }
 
-        stage('Docker Build using Shared Library') {
+        stage('Docker Build') {
             steps {
-                dockerBuild('demo-app:latest')
+                sh 'docker build -t demo-app .'
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                sh 'echo Docker push step'
             }
         }
     }
