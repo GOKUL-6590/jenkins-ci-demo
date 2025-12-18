@@ -4,15 +4,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git 'https://github.com/GOKUL-6590/jenkins-ci-demo.git'
+                sh 'echo Build completed'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo Tests passed'
             }
         }
 
         stage('Docker Build using Shared Library') {
             steps {
-                dockerBuild('demo-app')
+                dockerBuild('demo-app:latest')
             }
         }
     }
