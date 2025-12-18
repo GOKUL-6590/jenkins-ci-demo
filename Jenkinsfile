@@ -1,28 +1,18 @@
+@Library('shared-lib') _
+
 pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                sh 'echo Build completed'
+                git 'https://github.com/<your-username>/jenkins-ci-demo.git'
             }
         }
 
-        stage('Test') {
+        stage('Docker Build using Shared Library') {
             steps {
-                sh 'echo Tests passed'
-            }
-        }
-
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t demo-app .'
-            }
-        }
-
-        stage('Docker Push') {
-            steps {
-                sh 'echo Docker push step'
+                dockerBuild('demo-app')
             }
         }
     }
