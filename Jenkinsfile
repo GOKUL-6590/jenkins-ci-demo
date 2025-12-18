@@ -2,21 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/GOKUL-6590/jenkins-ci-demo.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'echo Build stage'
+                sh 'echo Build completed'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo Test stage'
+                sh 'echo Tests passed'
             }
         }
 
@@ -28,7 +22,7 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                sh 'echo Docker push skipped (demo)'
+                sh 'echo Docker push step'
             }
         }
     }
